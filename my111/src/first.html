@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyFirstHomework</title>
+    <style>
+     table{
+         border-collapse:collapse;
+         width:80%;
+         margin: 20px auto;
+     }
+     th,td{
+         border:1px solid #000;
+         padding: 8px;
+         text-align: center;
+     }
+     th{
+         background-color:#f2f2f2;
+     }
+     .controls{
+         text-align: center;
+         margin:20px 0;
+     }
+     button{
+         padding:8px 16px;
+         margin: 0 5px;
+         cursor:pointer;
+     }
+     img{
+         max-width:100%;
+         height:auto;
+         display:block;
+         margin:0 auto;
+     }
+     nav{
+         background-color:#333;
+         padding:10px;
+         margin-bottom:20px;
+     }
+     nav a{
+         color:white;
+         text-decoration: none;
+         margin:0 15px;
+         font-size: 18px;
+     }
+     nav a:hover{
+         color:#4CAF50;
+     }
+     .student-query{
+         width:80%;
+         margin:20px auto;
+         padding:20px;
+         border:1px solid #ddd;
+         border-radius:5px;
+         background-color:#f9f9f9;
+     }
+     .info-display{
+         margin-top:20px;
+         padding:15px;
+         border:1px solid #ddd;
+         border-radius:5px;
+         background-color:#fff;
+     }
+    </style>
+
+</head>
+<body>
+<nav>
+    <a href="#home">Home page</a>
+    <a href="#hobbies">My hobbies</a>
+    <a href="#classmates">Classmate Query</a>
+</nav>
+<h1 style="text-align: center;">Freshman's life</h1>
+<p>During my freshman year, I participated in many clubs and societies, which not only enriched my daily life but also strengthened my sense of <strong>responsibility</strong>. I persisted in running every day, completed tasks assigned by teachers, and kept myself in <span style="color:red;">good physical shape</span>. In class, I studied attentively, and after class, I reviewed the lessons carefully.</p>
+<p>During my freshman year, I also found a <b>part-time job</b>, made some friends, and was able to cover my daily living expenses, which made me more independent.</p>
+<img src="微信图片_20240827220455.jpg" alt="Picture is missing" title="It's not me" width="200" height="200">
+<audio id="bg-music" loop muted>
+    <source src="VZEUS - Have The Cure 2.ogg" type="audio/ogg">
+    <source src="VZEUS - Have The Cure 2.ogg" type="audio/mpeg">
+    Your browser does not support playback
+</audio>
+<div class="controls">
+<button onclick="playMusic()">Play music</button>
+<button onclick="pauseMusic()">Pause music</button>
+</div>
+<h2 style="text-align: center;">My hobbies</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="color: yellow;">java1</td>
+        <td>java1</td>
+        <td>java1</td>
+        <td>java1</td>
+        <td rowspan="5">
+            <img src="DCFCFA6967036979DACB1CCAEBDFF442.jpg" alt="false" width="150">
+        </td>
+    </tr>
+    <tr>
+        <td>java2</td>
+        <td>java2</td>
+        <td>java2</td>
+        <td>java2</td>
+    </tr>
+    <tr>
+        <td>java3</td>
+        <td>java3</td>
+        <td>java3</td>
+        <td>java3</td>
+    </tr>
+    <tr>
+        <td>java4</td>
+        <td>java4</td>
+        <td>java4</td>
+        <td>java4</td>
+    </tr>
+    <tr>
+        <td>java5</td>
+        <td style="font-family:'SimSun';">java5</td>
+        <td>java5</td>
+        <td>java5</td>
+    </tr>
+    </tbody>
+</table>
+<div class="student-query"id="classmates">
+    <h2 style="text-align:center;">Classmate Information Query</h2>
+    <label for="student-select">Choose a classmate</label>
+    <select id="student-select">
+        <option value="">Please select</option>
+        <option value="zhang">zhang</option>
+        <option value="li">li</option>
+    </select>
+    <button onclick="showStudentInfo()">Query</button>
+    <div class="info-display"id="info-display">
+        Please choose a classmate
+    </div>
+</div>
+<script>
+    const music=document.getElementById('bg-music');
+    function playMusic()
+    {
+        music.muted=false;
+        music.play();
+    }
+    function pauseMusic()
+    {
+        music.pause();
+    }
+    alert("Welcome back!");
+    const studentData={
+            "zhang":{
+                number:"2024001",
+                age:"20",
+                hobby:"soccer"
+            },
+        "li":{
+                number:"2024002",
+            age:"20",
+            hobby:"basketball"
+        }
+    };
+    function showStudentInfo(){
+        const select=document.getElementById("student-select");
+        const display = document.getElementById("info-display");
+        const studentName=select.value;
+        if(studentName)
+        {
+            const info=studentData[studentName];
+            display.innerHTML=`
+                <h3>${studentName}'s information</h3>
+            <p><strong>number:</strong>${info.number}</p>
+            <p><strong>age:</strong>${info.age}</p>
+            <p><strong>hobby:</strong>${info.hobby}</p>
+            `;
+        }
+        else{
+            display.innerHTML="Please choose a classmate";
+        }
+    }
+</script>
+</body>
+</html>
